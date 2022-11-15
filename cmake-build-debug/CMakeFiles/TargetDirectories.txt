@@ -1,0 +1,3 @@
+C:/Users/helko/CLionProjects/tasksDSA/cmake-build-debug/CMakeFiles/tasksDSA.dir
+C:/Users/helko/CLionProjects/tasksDSA/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/helko/CLionProjects/tasksDSA/cmake-build-debug/CMakeFiles/rebuild_cache.dir
