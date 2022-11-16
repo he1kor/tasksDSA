@@ -1,24 +1,17 @@
-#include <iostream>
 #include "TaskSelector.h"
+#include "Printer.h"
+#include "Util/Input.h"
 
-int main() {
+int main()
+{
     TaskSelector taskSelector = TaskSelector();
     const std::vector<std::string> tasks = taskSelector.getTasks();
-    const int size = tasks.size();
-    for (int i = 0; i < size-1; i++)
-    {
-        std::cout << tasks[i] + ", ";
-    }
-    std::cout << tasks[size-1] << "\n";
-    std::string answer = "";
+    Printer::printVector(tasks);
+    std::string answer;
     while (true) {
-        while (!taskSelector.hasTask(answer)) {
-            std::cin >> answer;
-            if (answer == "0") goto EXIT;
-        }
+        answer = Input::loopQuestion<TaskSelector>("Choose program: ",&TaskSelector::hasTask,taskSelector,"0");
+        if (answer == "__EXIT__") break;
         taskSelector.launch(answer);
-        answer = "";
     }
-    EXIT:
     return 0;
 }

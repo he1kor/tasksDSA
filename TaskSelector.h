@@ -10,7 +10,9 @@ public:
 
     TaskSelector();
 
-    int launch(std::string& task);
+    void launch(std::string& task);
     std::vector<std::string> getTasks();
     bool hasTask(const std::string& task);
+private:
+    int createTask(std::string &task);
 };

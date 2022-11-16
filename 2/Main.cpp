@@ -5,7 +5,7 @@ namespace task2 {
     int Main::run()
     {
         std::cout << "second main!";
-        return 0;
+        return 1;
     }
 
 }

@@ -1,6 +1,7 @@
 #include "TaskSelector.h"
 
 #include <stdexcept>
+#include <iostream>
 
 #include "1/Main.h"
 #include "2/Main.h"
@@ -11,7 +12,6 @@
 
 const std::vector<std::vector<std::string>> TaskSelector::TASKS =
         {
-                {"1","2","3"},
                 {"1","2"}
         };
 
@@ -26,11 +26,36 @@ TaskSelector::TaskSelector()
     }
 }
 
-int TaskSelector::launch(std::string& task)
+void TaskSelector::launch(std::string& task)
 {
+    if (task == ""){
+        throw std::invalid_argument("Provided task is empty");
+    }
     if (!hasTask(task))
         throw std::invalid_argument("TaskSelector hasn't task " + task);
 
+    std::cout << "\n" << std::string(40,'-');
+    std::cout << "\n" << "The task " << task << " is starting...";
+    std::cout << "\n" << std::string(40,'-') << "\n";
+
+    int finishing_status;
+    try {
+        finishing_status = createTask(task);
+    }
+    catch (std::exception&){
+        finishing_status = 1;
+    }
+    if (finishing_status == 0){
+        std::cout << "\n" << std::string(40,'-');
+        std::cout << "\n" << "The task finished successfully";
+        std::cout << "\n" << std::string(40,'-') << "\n";
+    } else {
+        std::cout << "\n" << std::string(40,'-');
+        std::cout << "\n" << "The task finished with an error " << finishing_status;
+        std::cout << "\n" << std::string(40,'-') << "\n";
+    }
+}
+int TaskSelector::createTask(std::string& task){
     if (task == formattedTasks[0]) return task1::Main().run();
     if (task == formattedTasks[1]) return task2::Main().run();
     throw std::runtime_error("something went wrong");
