@@ -3,12 +3,11 @@
 #include <functional>
 #include <iostream>
 
-
 class Input {
 public:
     template<class className>
     ///\__EXIT__ output for input EXITCommand
-    static std::string loopQuestion(const std::string& question, bool (className::*predicate)(const std::string&),className& object,const std::string& EXITCommand) {
+    static std::string loopQuestion(bool (className::*predicate)(const std::string&),className& object,const std::string& EXITCommand) {
         std::string answer;
         while (true) {
             std::cin >> answer;
@@ -18,5 +17,3 @@ public:
         }
     }
 };
-
-
