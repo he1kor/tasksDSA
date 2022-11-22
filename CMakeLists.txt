@@ -4,4 +4,4 @@ project(tasksDSA)
 set(CMAKE_CXX_STANDARD 23)
 
 
-add_executable(tasksDSA main.cpp 1/Main.cpp 1/Main.h 2/Main.cpp 2/Main.h TaskSelector.cpp TaskSelector.h Printer.cpp Printer.h Util/Input.h)
+add_executable(tasksDSA main.cpp 1/1/Main.cpp 1/1/Main.h 1/2/Main.cpp 1/2/Main.h TaskSelector.cpp TaskSelector.h Printer.cpp Printer.h Util/Input.h)

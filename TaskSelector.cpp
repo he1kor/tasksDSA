@@ -2,9 +2,10 @@
 
 #include <stdexcept>
 #include <iostream>
+#include <limits>
 
-#include "1/Main.h"
-#include "2/Main.h"
+#include "1/1/Main.h"
+#include "1/2/Main.h"
 
 /**
  * Launches selected task object
@@ -54,10 +55,12 @@ void TaskSelector::launch(std::string& task)
         std::cout << "\n" << "The task finished with an error " << finishing_status;
         std::cout << "\n" << std::string(40,'-') << "\n";
     }
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
 int TaskSelector::createTask(std::string& task){
-    if (task == formattedTasks[0]) return task1::Main().run();
-    if (task == formattedTasks[1]) return task2::Main().run();
+    if (task == formattedTasks[0]) return task1_1::Main().run();
+    if (task == formattedTasks[1]) return task1_2::Main().run();
     throw std::runtime_error("something went wrong");
 }
 
