@@ -12,7 +12,6 @@ public:
         std::string answer;
         while (true) {
             std::cin >> answer;
-            std::cout << "\"" << answer << "\"";
             if (answer == "0") return "__EXIT__";
             if ((object.*predicate)(answer)) return answer;
             std::cout << "Wrong answer!\n";
@@ -31,6 +30,30 @@ public:
             std::cout << "Not integer!\n";
             std::cin.clear();
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        }
+    }
+    static int readRangedInt(int from, int to){
+        std::cin.unsetf(std::ios::dec);
+        std::cin.unsetf(std::ios::hex);
+        std::cin.unsetf(std::ios::oct);
+        int answer;
+        while (true)
+        {
+            std::cin >> answer;
+            if (!std::cin.good())
+            {
+                std::cout << "Not integer!\n";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+            if (answer < from || to < answer){
+                std::cout << "Not in range!\n";
+                std::cin.clear();
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                continue;
+            }
+            return answer;
         }
     }
 };

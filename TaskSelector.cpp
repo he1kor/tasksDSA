@@ -6,6 +6,9 @@
 
 #include "1/1/Main.h"
 #include "1/2/Main.h"
+#include "1/3/Main.h"
+#include "1/4/Main.h"
+#include "1/5/Main.h"
 
 /**
  * Launches selected task object
@@ -13,7 +16,7 @@
 
 const std::vector<std::vector<std::string>> TaskSelector::TASKS =
         {
-                {"1","2"}
+                {"1","2","3","4","5"}
         };
 
 TaskSelector::TaskSelector()
@@ -61,6 +64,9 @@ void TaskSelector::launch(std::string& task)
 int TaskSelector::createTask(std::string& task){
     if (task == formattedTasks[0]) return task1_1::Main().run();
     if (task == formattedTasks[1]) return task1_2::Main().run();
+    if (task == formattedTasks[2]) return task1_3::Main().run();
+    if (task == formattedTasks[3]) return task1_4::Main().run();
+    if (task == formattedTasks[4]) return task1_5::Main().run();
     throw std::runtime_error("something went wrong");
 }
 

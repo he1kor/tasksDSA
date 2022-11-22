@@ -3,41 +3,35 @@
 #include "Main.h"
 #include "../../Util/Input.h"
 
-namespace task1_2 {
+namespace task1_5
+{
     int Main::run()
     {
-        std::cout << "Input 32-bit number: ";
+        std::cout << "Input 32-bit number:";
         int result = Input::readUnsignedInt();
+        std::cout << "Input index of bit to set 1:";
+        int index = Input::readRangedInt(0,31);
 
         std::cout << "Raw bits:\n";
         printBits(result);
         std::cout << "\n";
 
-        int trueIndexes[] = {0,5,8};
-        int mask = createBitMaskWithFalseIndexes(trueIndexes,std::size(trueIndexes));
+        int mask = createBitMaskWithTrueIndex(index);
 
-        result &= mask;
+        result |= mask;
 
         std::cout << "Masked bits:\n";
         printBits(result);
         return 0;
     }
-    int Main::createBitMaskWithFalseIndexes(int *indexes, int size){
-        int mask = ~0;
-        for (int i = 0; i < size; i++){
-            mask &= createBitMaskWithFalseIndex(indexes[i]);
-        }
-        return mask;
-    }
-    int Main::createBitMaskWithFalseIndex(int index){
+    int Main::createBitMaskWithTrueIndex(int index){
         if (index > 31 || index < 0)
             throw std::errc::argument_out_of_domain;
         int mask = 1;
         mask = mask << index;
-        return ~mask;
+        return mask;
     }
     void Main::printBits(int value){
         std::cout << std::bitset<sizeof(value)*8> (value);
     }
-
 }
