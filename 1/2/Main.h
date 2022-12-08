@@ -11,9 +11,9 @@ namespace task1_2 {
 
         void printBits(int value);
 
-        int createBitMaskWithFalseIndex(int index);
+        int createMaskWithFalseBit(int index);
 
-        int createBitMaskWithFalseIndexes(int *indexes, int size);
+        int createMaskWithFalseBits(int *indexes, int size);
     };
 
 }

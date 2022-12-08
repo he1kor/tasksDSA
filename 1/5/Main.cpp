@@ -16,7 +16,7 @@ namespace task1_5
         printBits(result);
         std::cout << "\n";
 
-        int mask = createBitMaskWithTrueIndex(index);
+        int mask = createMaskWithTrueBit(index);
 
         result |= mask;
 
@@ -24,7 +24,7 @@ namespace task1_5
         printBits(result);
         return 0;
     }
-    int Main::createBitMaskWithTrueIndex(int index){
+    int Main::createMaskWithTrueBit(int index){
         if (index > 31 || index < 0)
             throw std::errc::argument_out_of_domain;
         int mask = 1;

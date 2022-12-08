@@ -13,7 +13,7 @@ namespace task1_1
         std::cout << "\n";
 
         int trueIndexes[] = {0,5,8};
-        int mask = createBitMaskWithTrueIndexes(trueIndexes,std::size(trueIndexes));
+        int mask = createMaskWithTrueBits(trueIndexes, std::size(trueIndexes));
 
         result |= mask;
 
@@ -21,14 +21,14 @@ namespace task1_1
         printBits(result);
         return 0;
     }
-    int Main::createBitMaskWithTrueIndexes(int *indexes, int size){
+    int Main::createMaskWithTrueBits(int *indexes, int size){
         int mask = 0;
         for (int i = 0; i < size; i++){
-            mask |= createBitMaskWithTrueIndex(indexes[i]);
+            mask |= createMaskWithTrueBit(indexes[i]);
         }
         return mask;
     }
-    int Main::createBitMaskWithTrueIndex(int index){
+    int Main::createMaskWithTrueBit(int index){
         if (index > 31 || index < 0)
             throw std::errc::argument_out_of_domain;
         int mask = 1;

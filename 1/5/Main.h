@@ -9,7 +9,7 @@ namespace task1_5
             int run();
 
         private:
-            int createBitMaskWithTrueIndex(int index);
+            int createMaskWithTrueBit(int index);
 
             void printBits(int value);
     };

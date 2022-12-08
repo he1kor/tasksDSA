@@ -9,9 +9,9 @@ namespace task1_1
             int run();
 
         private:
-            int createBitMaskWithTrueIndex(int index);
+            int createMaskWithTrueBit(int index);
 
-            int createBitMaskWithTrueIndexes(int *indexes, int size);
+            int createMaskWithTrueBits(int *indexes, int size);
 
             void printBits(int value);
     };
