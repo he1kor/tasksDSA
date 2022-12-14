@@ -21,21 +21,23 @@ namespace task1_1
         printBits(result);
         return 0;
     }
-    int Main::createMaskWithTrueBits(int *indexes, int size){
+    int Main::createMaskWithTrueBits(int *indexes, int size)
+    {
         int mask = 0;
-        for (int i = 0; i < size; i++){
+        for (int i = 0; i < size; i++)
             mask |= createMaskWithTrueBit(indexes[i]);
-        }
         return mask;
     }
-    int Main::createMaskWithTrueBit(int index){
-        if (index > 31 || index < 0)
+    int Main::createMaskWithTrueBit(int index)
+    {
+        if (index >= sizeof(int)*8 || index < 0)
             throw std::errc::argument_out_of_domain;
         int mask = 1;
         mask = mask << index;
         return mask;
     }
-    void Main::printBits(int value){
+    void Main::printBits(int value)
+    {
         std::cout << std::bitset<sizeof(value)*8> (value);
     }
 }

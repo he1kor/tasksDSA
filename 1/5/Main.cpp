@@ -24,14 +24,16 @@ namespace task1_5
         printBits(result);
         return 0;
     }
-    int Main::createMaskWithTrueBit(int index){
+    int Main::createMaskWithTrueBit(int index)
+    {
         if (index > 31 || index < 0)
             throw std::errc::argument_out_of_domain;
         int mask = 1;
         mask = mask << index;
         return mask;
     }
-    void Main::printBits(int value){
+    void Main::printBits(int value)
+    {
         std::cout << std::bitset<sizeof(value)*8> (value);
     }
 }

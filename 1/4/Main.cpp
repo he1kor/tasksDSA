@@ -3,8 +3,10 @@
 #include "Main.h"
 #include "../../Util/Input.h"
 
-namespace task1_4 {
-    int Main::run() {
+namespace task1_4
+{
+    int Main::run()
+    {
         std::cout << "Input 32-bit number:";
         int result = Input::readUnsignedInt();
 
@@ -18,12 +20,13 @@ namespace task1_4 {
         printBits(result);
         return 0;
     }
-    void Main::divideByPowerOfTwo(int *value,int multiplier){
-        *value >>= multiplier;
+    void Main::divideByPowerOfTwo(int *value,int power)
+    {
+        *value >>= power;
     }
 
-
-    void Main::printBits(int value){
+    void Main::printBits(int value)
+    {
         std::cout << std::bitset<sizeof(value)*8> (value);
     }
 }
