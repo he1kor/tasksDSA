@@ -10,6 +10,7 @@
 #include "1/4/Main.h"
 #include "1/5/Main.h"
 #include "1/6/Main.h"
+#include "2/1/Main.h"
 
 /**
  * Launches selected task object
@@ -17,7 +18,8 @@
 
 const std::vector<std::vector<std::string>> TaskSelector::TASKS =
         {
-                {"1","2","3","4","5","6"}
+                {"1","2","3","4","5","6"},
+                {"1"}
         };
 
 TaskSelector::TaskSelector()
@@ -33,7 +35,8 @@ TaskSelector::TaskSelector()
 
 void TaskSelector::launch(std::string& task)
 {
-    if (task == ""){
+    if (task == "")
+    {
         throw std::invalid_argument("Provided task is empty");
     }
     if (!hasTask(task))
@@ -44,17 +47,21 @@ void TaskSelector::launch(std::string& task)
     std::cout << "\n" << std::string(40,'-') << "\n";
 
     int finishing_status;
-    try {
+    try
+    {
         finishing_status = createTask(task);
     }
-    catch (std::exception&){
+    catch (std::exception&)
+    {
         finishing_status = 1;
     }
-    if (finishing_status == 0){
+    if (finishing_status == 0)
+    {
         std::cout << "\n" << std::string(40,'-');
         std::cout << "\n" << "The task finished successfully";
         std::cout << "\n" << std::string(40,'-') << "\n";
-    } else {
+    } else
+    {
         std::cout << "\n" << std::string(40,'-');
         std::cout << "\n" << "The task finished with an error " << finishing_status;
         std::cout << "\n" << std::string(40,'-') << "\n";
@@ -62,13 +69,15 @@ void TaskSelector::launch(std::string& task)
     std::cin.clear();
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 }
-int TaskSelector::createTask(std::string& task){
+int TaskSelector::createTask(std::string& task)
+{
     if (task == formattedTasks[0]) return task1_1::Main().run();
     if (task == formattedTasks[1]) return task1_2::Main().run();
     if (task == formattedTasks[2]) return task1_3::Main().run();
     if (task == formattedTasks[3]) return task1_4::Main().run();
     if (task == formattedTasks[4]) return task1_5::Main().run();
     if (task == formattedTasks[5]) return task1_6::Main().run();
+    if (task == formattedTasks[6]) return task2_1::Main().run();
     throw std::runtime_error("something went wrong");
 }
 
